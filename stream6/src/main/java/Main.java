@@ -10,7 +10,7 @@ public class Main {
 	
 	public Main() throws IOException
 	{
-		JFrame frame = new JFrame("Project Title");
+		JFrame frame = new JFrame("Willy");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// This centers the JFrame to the screen
 		frame.setSize(500, 400);
