@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Reads stream information from the AllTheDataCorrected.txt file
+**/
 public class Statistics {
 	
 	public ArrayList<String> location = new ArrayList();
