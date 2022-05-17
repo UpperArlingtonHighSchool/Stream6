@@ -3,16 +3,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
-Reads stream information from the AllTheDataCorrected.txt file
-**/
 public class Statistics {
 	
 	public ArrayList<String> location = new ArrayList();
 	public ArrayList<String> date = new ArrayList();
 	public ArrayList<Double> pH = new ArrayList();
 	public ArrayList<Double> nitrate = new ArrayList();
-	public double pHMean ,pHStDev, pHPValue, nitrateMean, nitrateStDev, nitratePValue;
+	public double pHMean ,pHStDev, nitrateMean, nitrateStDev;
 	
 	public Statistics() throws FileNotFoundException {
 		getData();
@@ -31,10 +28,10 @@ public class Statistics {
 			read.nextDouble();
 			read.nextDouble();
 			read.nextDouble();
+			read.nextDouble();
+			read.nextDouble();
+			read.nextDouble();
 			pH.add(read.nextDouble());
-			read.nextDouble();
-			read.nextDouble();
-			read.nextDouble();
 			read.nextDouble();
 			read.nextDouble();
 			read.nextDouble();
@@ -47,20 +44,28 @@ public class Statistics {
 	
 	public void oneVarStat(String data) {
 		if (data.equals("pH")) {
-			ArrayList<Double> tempPH = pH;
+			ArrayList<Double> tempPH = new ArrayList(pH);
 			for(int i = tempPH.size() - 1; i >= 0; i--) {
 				pHMean += tempPH.remove(i);
 			}
 			pHMean /= 20;
-			System.out.println(pHMean);
+			tempPH = pH;
+			for(int i = tempPH.size() - 1; i >= 0; i--) {
+				pHStDev += tempPH.remove(i);
+			}
+			System.out.println(pHMean + "\n" + pHStDev);
 		}
 		else if(data.equals("Nitrate")) {
-			ArrayList<Double> tempNitrate = nitrate;
+			ArrayList<Double> tempNitrate = new ArrayList(nitrate);
 			for(int i = tempNitrate.size() - 1; i >= 0; i--) {
 				nitrateMean += tempNitrate.remove(i);
 			}
 			nitrateMean /= 20;
-			System.out.println(nitrateMean);
+			tempNitrate = nitrate;
+			for(int i = tempNitrate.size() - 1; i >= 0; i--) {
+				nitrateStDev += tempNitrate.remove(i);
+			}
+			System.out.println(nitrateMean + "\n" + nitrateStDev);
 		}
 	}
 	
