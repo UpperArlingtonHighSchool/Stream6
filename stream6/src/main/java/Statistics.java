@@ -18,12 +18,11 @@ public class Statistics {
 	{
 		Scanner read = new Scanner(new File("src/main/resources/AllTheDataCorrected.txt"));
 		
-		while(read.hasNextLine())
-		{
+		while(read.hasNextLine()) {
 			location.add(read.next());
 			date.add(read.next());
 			read.nextDouble();
-			nitrate.add(read.nextDouble());
+			read.nextDouble();
 			read.nextDouble();
 			read.nextDouble();
 			read.nextDouble();
@@ -33,7 +32,7 @@ public class Statistics {
 			read.nextDouble();
 			read.nextDouble();
 			pH.add(read.nextDouble());
-			read.nextDouble();
+			nitrate.add(read.nextDouble());
 			read.nextDouble();
 			read.nextDouble();
 		}
