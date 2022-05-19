@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 // import org.jfree.chart.ChartFactory;
 import org.jfree.data.xy.DefaultXYDataset;
@@ -28,7 +28,8 @@ public class Main {
 		// This is necessary to allow JFrame elements to be placed freely
 		frame.setLayout(null);
 		
-		JTextArea area = new JTextArea("This is where we flex");
+		JTextPane area = new JTextPane();
+		area.setText("This is where we flex\n\nWe discovered the recommended stream ranges are [" + Web.getRange() + "], and blah blah blah sulley does the rest");
 		area.setBounds(5, 5, 200, 300);
 		area.setEditable(false);
 		frame.getContentPane().add(area);
@@ -47,6 +48,7 @@ public class Main {
 				graph.setLocationRelativeTo(null);
 				// This is necessary to allow JFrame elements to be placed freely
 				graph.setLayout(null);
+				graph.setResizable(false);
 				
 				// Let's temporarily create an xy dataset
 				double[][] dataTemp = new double[2][20];
@@ -84,6 +86,6 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException
 	{
-		new Main();
+		 new Main();
 	}
 }
