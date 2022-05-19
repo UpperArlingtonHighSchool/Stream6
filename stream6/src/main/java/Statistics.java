@@ -43,6 +43,7 @@ public class Statistics {
 		setMatrix();
 	}
 	
+	//sets the 2D-Array of pH and nitrate for use in line graphs
 	private void setMatrix()
 	{
 		ArrayList<Double> tempPH = new ArrayList<Double>(pH);
@@ -62,8 +63,10 @@ public class Statistics {
 		
 	}
 	
+	//finds the mean and standard deviation of the data for either pH or nitrate
 	private void oneVarStat(String data)
 	{
+		//finds the mean and standard deviation of the pH
 		if(data.equals("pH"))
 		{
 			ArrayList<Double> tempPH = new ArrayList<Double>(pH);
@@ -80,6 +83,7 @@ public class Statistics {
 			pHStDev = Math.sqrt(pHStDev /= 20);
 			System.out.println(pHMean + "\n" + pHStDev);
 		}
+		//finds the mean and standard deviation of the nitrate
 		else if(data.equals("Nitrate"))
 		{
 			ArrayList<Double> tempNitrate = new ArrayList<Double>(nitrate);
