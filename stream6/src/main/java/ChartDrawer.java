@@ -26,12 +26,13 @@ public class ChartDrawer {
 		mainFrame = frame;
 	}
 	
+	// The CategoryDataset thing is the data
 	public ChartDrawer(JFrame frame, CategoryDataset data) {
 		mainFrame = frame;
 		dataset = data;
 	}
 	
-	// The CategoryDataset thing decides whether or not the data should be a line graph or a bar graph
+	// The title, xAxis, and yAxis are the title strings for the respective elements
 	public ChartDrawer(JFrame frame, CategoryDataset data, String title, String xAxis, String yAxis) {
 		mainFrame = frame;
 		dataset = data;
