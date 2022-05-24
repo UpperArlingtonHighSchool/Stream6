@@ -12,6 +12,7 @@ public class Statistics {
 	public ArrayList<Double> nitrate = new ArrayList<Double>();
 	public double pHMean, pHStDev, nitrateMean, nitrateStDev;
 	public double[][] pHvsNitrate = new double[2][20];
+	public double lowPH, highPH,lowNitrate, highNitrate;
 	
 	// reads the data from the data file and puts the interested data into array lists
 	private void updateData() throws FileNotFoundException
@@ -71,8 +72,18 @@ public class Statistics {
 		if(data.equals("pH"))
 		{
 			ArrayList<Double> tempPH = new ArrayList<Double>(pH);
-			for(int i = tempPH.size() - 1; i >= 0; i--)
+			lowPH = tempPH.get(0);
+			highPH = tempPH.get(0);
+			for(int i = tempPH.size() - 1; i >= 0; i--) 
 			{
+				if(tempPH.get(i) < lowPH) 
+				{
+					lowPH = tempPH.get(i);
+				}
+				else if(tempPH.get(i) > highPH) 
+				{
+					highPH = tempPH.get(i);
+				}
 				pHMean += tempPH.remove(i);
 			}
 			pHMean /= 20;
@@ -88,8 +99,18 @@ public class Statistics {
 		else if(data.equals("Nitrate"))
 		{
 			ArrayList<Double> tempNitrate = new ArrayList<Double>(nitrate);
-			for(int i = tempNitrate.size() - 1; i >= 0; i--)
+			lowNitrate = tempNitrate.get(0);
+			highNitrate = tempNitrate.get(0);
+			for(int i = tempNitrate.size() - 1; i >= 0; i--) 
 			{
+				if(tempNitrate.get(i) < lowNitrate) 
+				{
+					lowNitrate = tempNitrate.get(i);
+				}
+				else if(tempNitrate.get(i) > highNitrate) 
+				{
+					highNitrate = tempNitrate.get(i);
+				}
 				nitrateMean += tempNitrate.remove(i);
 			}
 			nitrateMean /= 20;
