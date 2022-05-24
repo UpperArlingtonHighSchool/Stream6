@@ -6,6 +6,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.xy.XYDataset;
 
 
@@ -13,7 +14,7 @@ public class ChartDrawer {
 	
 	private JFrame mainFrame;
 	private double[][] dataMatrix;
-	private XYDataset dataset;
+	private CategoryDataset dataset;
 	private JFreeChart mainChart;
 	private ChartPanel mainPanel;
 	
@@ -22,22 +23,22 @@ public class ChartDrawer {
 		mainFrame = frame;
 	}
 	
-	public ChartDrawer(JFrame frame, XYDataset data) {
+	public ChartDrawer(JFrame frame, CategoryDataset data) {
 		mainFrame = frame;
 		dataset = data;
 	}
 	
-	public ChartDrawer(JFrame frame, XYDataset data, String title, String xAxis, String yAxis) {
+	public ChartDrawer(JFrame frame, CategoryDataset data, String title, String xAxis, String yAxis) {
 		mainFrame = frame;
 		dataset = data;
 		
-		mainChart = ChartFactory.createXYLineChart(title, xAxis, yAxis, data, PlotOrientation.VERTICAL, false, false, false);
+		mainChart = ChartFactory.createBarChart(title, xAxis, yAxis, data, PlotOrientation.VERTICAL, true, true, false);
 		mainPanel = new ChartPanel(mainChart);
 		
 	}
 	
 	// Use these to import data
-	public void importData(XYDataset data) {
+	public void importData(CategoryDataset data) {
 		dataset = data;
 		
 	}
@@ -48,18 +49,6 @@ public class ChartDrawer {
 			dataMatrix[0][i] = xData.get(i);
 			dataMatrix[1][i] = yData.get(i);
 		}
-	}
-	
-	// Use this to update the graph
-	public void updateGraph(XYDataset data) {
-		dataset = data;
-		mainChart.getXYPlot().setDataset(data);
-		mainPanel.repaint();
-	}
-	
-	public void updateGraph(ArrayList<Double> x, ArrayList<Double> y) {
-		importData(x, y);
-		updateGraph(dataset);
 	}
 	
 	// Use this to draw the graph
