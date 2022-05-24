@@ -1,3 +1,6 @@
+// Zachary Windisch
+// IB Computer Science, May of 2022
+
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -28,6 +31,7 @@ public class ChartDrawer {
 		dataset = data;
 	}
 	
+	// The CategoryDataset thing decides whether or not the data should be a line graph or a bar graph
 	public ChartDrawer(JFrame frame, CategoryDataset data, String title, String xAxis, String yAxis) {
 		mainFrame = frame;
 		dataset = data;
